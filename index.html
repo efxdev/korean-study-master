@@ -171,6 +171,601 @@ footer{
 @media(max-width:560px){.mefx-admin-grid{grid-template-columns:1fr 1fr}.mefx-user-pill{margin-left:0}.mefx-auth-card{padding:20px}}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style id="MEFX_PREMIUM_PINK_THEME_FINAL">
+:root{
+  --ink:#25233b;
+  --muted:#77758d;
+  --line:#eee8f4;
+  --p:#7652ee;
+  --p2:#a45ff2;
+  --bg:#fbf8ff;
+  --good:#15956c;
+  --bad:#d44f67;
+  --card:#fff;
+}
+html{background:#fbf8ff!important}
+body{
+  background:
+    radial-gradient(circle at 8% 3%,rgba(151,121,255,.16),transparent 28%),
+    radial-gradient(circle at 94% 5%,rgba(255,141,190,.19),transparent 28%),
+    linear-gradient(180deg,#fffaff 0%,#f8f5ff 52%,#fff8fb 100%)!important;
+  color:var(--ink)!important;
+}
+.wrap{width:min(1080px,100%)!important;padding:22px 16px 62px!important}
+.card{
+  background:rgba(255,255,255,.78)!important;
+  border:1px solid rgba(255,255,255,.95)!important;
+  border-radius:26px!important;
+  box-shadow:0 18px 50px rgba(83,59,130,.08),inset 0 1px 0 rgba(255,255,255,.9)!important;
+  backdrop-filter:blur(16px) saturate(125%);
+  -webkit-backdrop-filter:blur(16px) saturate(125%);
+}
+.brand{
+  padding:34px 22px!important;
+  background:linear-gradient(145deg,rgba(255,255,255,.92),rgba(250,240,255,.72),rgba(255,242,247,.78))!important;
+  overflow:hidden;
+  position:relative;
+}
+.brand:before{
+  content:"";position:absolute;width:220px;height:220px;border-radius:50%;
+  right:-80px;top:-110px;background:rgba(255,143,190,.18);filter:blur(4px);pointer-events:none;
+}
+.brand .logo{
+  position:relative;
+  background:linear-gradient(145deg,#7652ee,#a45ff2,#ff78ad)!important;
+  box-shadow:0 14px 32px rgba(118,82,238,.24)!important;
+}
+.brand h1{position:relative;font-size:30px!important;letter-spacing:.8px!important}
+.brand p{position:relative;color:#817b95!important}
+.badge{
+  background:linear-gradient(135deg,rgba(118,82,238,.10),rgba(255,120,173,.10))!important;
+  color:#6545d4!important;
+  border:1px solid rgba(118,82,238,.13)!important;
+}
+.sectionTitle{color:#27243d!important}
+.subtitle{color:#77758d!important}
+.dashboard{gap:13px!important}
+.menuBtn,.tile{
+  background:linear-gradient(145deg,rgba(255,255,255,.90),rgba(255,250,255,.68))!important;
+  border:1px solid #eee8f4!important;
+  box-shadow:0 8px 24px rgba(83,59,130,.055)!important;
+  transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease!important;
+}
+.menuBtn:hover,.tile:hover{
+  transform:translateY(-5px)!important;
+  box-shadow:0 16px 34px rgba(83,59,130,.12)!important;
+  border-color:#e4d9f4!important;
+}
+.menuBtn:active,.tile:active,.btn:active,.studyTabs button:active,.opt:active{
+  transform:scale(.975)!important;
+}
+.menuBtn .ico{
+  background:linear-gradient(145deg,#f1ebff,#fff0f6)!important;
+  color:#7652ee!important;
+}
+.menuBtn:nth-child(2) .ico{background:#ebfaf3!important;color:#31a876!important}
+.menuBtn:nth-child(3) .ico{background:#fff3e3!important;color:#dd8b22!important}
+.menuBtn:nth-child(4) .ico{background:#edf3ff!important;color:#5181e9!important}
+.menuBtn:nth-child(5) .ico{background:#ffedf3!important;color:#e8668c!important}
+.menuBtn:nth-child(6) .ico{background:#fff0ea!important;color:#e87a55!important}
+.menuBtn:nth-child(7) .ico{background:#eaf9f7!important;color:#20a397!important}
+.menuBtn:nth-child(8) .ico{background:#fff6e2!important;color:#d69a16!important}
+.btn{
+  border-radius:14px!important;
+  transition:transform .18s ease,box-shadow .18s ease,filter .18s ease!important;
+}
+.btn:hover{filter:brightness(1.025)}
+.primary{
+  background:linear-gradient(100deg,#7652ee,#a45ff2,#e66fa9)!important;
+  box-shadow:0 10px 24px rgba(118,82,238,.23)!important;
+}
+.secondary{background:linear-gradient(135deg,#f0eaff,#fff0f7)!important;color:#6545d4!important}
+.ghost{background:#fff6fa!important;color:#6b5b79!important}
+input,select{
+  border:1px solid #e8e1f0!important;
+  background:rgba(255,255,255,.88)!important;
+  color:#25233b!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9)!important;
+  transition:border-color .2s,box-shadow .2s,transform .2s!important;
+}
+input:focus,select:focus{
+  border-color:#b89df0!important;
+  box-shadow:0 0 0 4px rgba(118,82,238,.09)!important;
+}
+.progress{background:#eeeaf5!important}
+.bar{background:linear-gradient(90deg,#7652ee,#a45ff2,#ef78ad)!important}
+.question{
+  background:linear-gradient(145deg,rgba(255,255,255,.88),rgba(250,244,255,.75))!important;
+  border:1px solid #eee8f4;
+  border-radius:22px!important;
+}
+.opt{
+  background:rgba(255,255,255,.88)!important;
+  border:1px solid #e8e1f0!important;
+  box-shadow:0 6px 18px rgba(83,59,130,.045)!important;
+  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease!important;
+}
+.opt:hover{transform:translateY(-2px);border-color:#cdb8ed!important;box-shadow:0 10px 24px rgba(83,59,130,.09)!important}
+.opt.correct{background:#ecfaf4!important;border-color:#35b98e!important;color:#087f5b!important}
+.opt.wrong{background:#fff0f3!important;border-color:#e67b91!important;color:#b5334d!important}
+.feedback.good{background:#ecfaf4!important;color:#087f5b!important}
+.feedback.bad{background:#fff0f3!important;color:#b5334d!important}
+.note{background:linear-gradient(135deg,#f5f0ff,#fff2f7)!important;border-color:#ece3f5!important}
+.grammarCard{background:rgba(255,255,255,.70)!important;border-color:#eee8f4!important;box-shadow:0 6px 20px rgba(83,59,130,.04)!important}
+.studyTabs button{
+  background:rgba(255,255,255,.82)!important;
+  border-color:#eee8f4!important;
+  transition:.2s!important;
+}
+.studyTabs button:hover{transform:translateY(-2px)}
+.studyTabs button.active{background:linear-gradient(135deg,#f0eaff,#fff0f7)!important;color:#6545d4!important;border-color:#d7c8ef!important}
+.stat{background:linear-gradient(135deg,#fff,#fff6fa)!important;border-color:#eee8f4!important}
+.result .score{color:#7652ee!important}
+.clockDigital{background:linear-gradient(145deg,#fff,#f7efff)!important;border:1px solid #eee8f4;border-radius:22px!important}
+.clockFace{background:rgba(255,255,255,.88)!important;box-shadow:0 15px 35px rgba(83,59,130,.10)!important}
+.pin{background:#7652ee!important}
+.audioBtn{background:linear-gradient(100deg,#7652ee,#a45ff2,#e66fa9)!important}
+.scroll{border-color:#eee8f4!important;background:rgba(255,255,255,.48)!important}
+th{background:#fff7fb!important}
+.empty{background:linear-gradient(135deg,#faf7ff,#fff7fa)!important;border:1px solid #eee8f4}
+footer{color:#817b95!important}
+.legalNav button,.footerLinks button{
+  background:transparent!important;color:#77758d!important;border-color:#eee8f4!important;
+  transition:.2s!important;
+}
+.legalNav button:hover,.footerLinks button:hover{
+  color:#7652ee!important;border-color:#d9c9ef!important;background:#fff!important;
+  box-shadow:0 6px 18px rgba(83,59,130,.08)!important;
+}
+#mefxAuthGate{
+  background:
+    radial-gradient(circle at 10% 5%,rgba(151,121,255,.18),transparent 28%),
+    radial-gradient(circle at 90% 7%,rgba(255,141,190,.22),transparent 28%),
+    linear-gradient(135deg,#fffaff,#f7f2ff,#fff7fb)!important;
+}
+.mefx-auth-card{
+  background:rgba(255,255,255,.84)!important;
+  border:1px solid rgba(255,255,255,.95)!important;
+  border-radius:28px!important;
+  box-shadow:0 24px 70px rgba(83,59,130,.14)!important;
+}
+.mefx-auth-logo{background:linear-gradient(145deg,#7652ee,#a45ff2,#ff78ad)!important;box-shadow:0 14px 32px rgba(118,82,238,.23)!important}
+.mefx-auth-tabs button{background:#f4efff!important;color:#6545d4!important;transition:.2s!important}
+.mefx-auth-tabs button.active{background:linear-gradient(100deg,#7652ee,#a45ff2,#e66fa9)!important;color:#fff!important}
+.mefx-link{color:#6545d4!important}
+.mefx-user-pill{background:linear-gradient(135deg,#fff,#fff4fa)!important;border-color:#eee8f4!important}
+#mefxTimer{background:linear-gradient(135deg,#fff0f3,#ffe5ee)!important;border-color:#ffcbd7!important}
+.mefx-admin-stat,.mefx-profile-stat,.mefx-profile-card{
+  background:rgba(255,255,255,.74)!important;border-color:#eee8f4!important;
+}
+.mefx-admin-stat b,.mefx-profile-stat b,.mefx-rank{color:#7652ee!important}
+.mefx-profile-avatar{background:linear-gradient(145deg,#7652ee,#a45ff2,#ff78ad)!important}
+@keyframes mefxPremiumFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+.brand .logo{animation:mefxPremiumFloat 4s ease-in-out infinite}
+@media(max-width:760px){
+  .wrap{padding:14px 12px 48px!important}
+  .card{border-radius:23px!important}
+  .brand{padding:28px 18px!important}
+}
+</style>
+
+<style id="MEFX_UI_CORRECTION_ONLY">
+/* UI-only correction: no study data, formulas, authentication logic, or JavaScript changed */
+:root{
+  --ink:#25233b !important;
+  --muted:#77758d !important;
+  --line:#ece4f3 !important;
+  --p:#7250e8 !important;
+  --p2:#e66fa9 !important;
+  --bg:#fbf8ff !important;
+  --card:#ffffff !important;
+}
+html,body{min-height:100%;background:#fbf8ff!important}
+body{
+  background:
+    radial-gradient(circle at 7% 0%,rgba(150,118,255,.17),transparent 27%),
+    radial-gradient(circle at 96% 3%,rgba(255,128,178,.17),transparent 26%),
+    linear-gradient(180deg,#fffaff 0%,#f8f4ff 55%,#fff9fc 100%)!important;
+}
+.wrap{width:min(1120px,100%)!important;margin:auto!important;padding:24px 18px 68px!important}
+.card{
+  background:rgba(255,255,255,.92)!important;
+  border:1px solid rgba(255,255,255,.98)!important;
+  border-radius:28px!important;
+  box-shadow:0 16px 45px rgba(78,51,125,.09),0 2px 8px rgba(78,51,125,.03)!important;
+}
+.brand{
+  min-height:190px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  background:
+    radial-gradient(circle at 84% 20%,rgba(255,119,173,.16),transparent 23%),
+    radial-gradient(circle at 15% 0%,rgba(120,88,239,.13),transparent 27%),
+    linear-gradient(135deg,#fff,#fbf5ff 55%,#fff6fa)!important;
+}
+.brand .logo{
+  width:72px!important;height:72px!important;border-radius:23px!important;
+  background:linear-gradient(135deg,#6f4ce6 0%,#9c5ceb 52%,#ef6fa8 100%)!important;
+}
+.brand h1{font-size:34px!important;letter-spacing:1px!important;color:#25233b!important}
+.brand p{display:block!important;color:#7a748c!important;font-size:13px!important;letter-spacing:2px!important}
+
+.dashboard{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:16px!important}
+.menuBtn{
+  min-height:148px!important;
+  padding:20px!important;
+  border:1px solid #eee7f4!important;
+  border-radius:22px!important;
+  background:linear-gradient(145deg,#fff,#fffbfe)!important;
+  box-shadow:0 8px 22px rgba(78,51,125,.055)!important;
+}
+.menuBtn:hover{
+  transform:translateY(-4px)!important;
+  border-color:#ddceef!important;
+  box-shadow:0 18px 34px rgba(78,51,125,.12)!important;
+}
+.menuBtn .ico{
+  width:50px!important;height:50px!important;border-radius:17px!important;
+  background:linear-gradient(145deg,#f0eaff,#fff0f6)!important;
+  color:#7552e7!important;
+}
+.menuBtn b{font-size:16px!important;color:#29263e!important}
+.menuBtn span{font-size:12px!important;line-height:1.5!important}
+
+.tile,.grammarCard,.mefx-profile-card,.mefx-admin-stat,.mefx-profile-stat{
+  border:1px solid #eee7f4!important;
+  background:linear-gradient(145deg,#fff,#fffbfe)!important;
+  border-radius:20px!important;
+  box-shadow:0 7px 20px rgba(78,51,125,.045)!important;
+}
+.sectionTitle{font-size:27px!important;color:#28253d!important}
+.badge{
+  background:linear-gradient(135deg,#f0eaff,#fff0f6)!important;
+  color:#6744d4!important;
+  border:1px solid #e4d8f2!important;
+}
+.btn{border-radius:15px!important}
+.primary,.btn.primary{
+  background:linear-gradient(100deg,#7050e6 0%,#9d5eea 52%,#e56fa8 100%)!important;
+  box-shadow:0 10px 24px rgba(111,80,230,.23)!important;
+}
+.secondary,.btn.secondary{
+  background:linear-gradient(135deg,#f0eaff,#fff0f6)!important;
+  color:#6845d6!important;
+}
+.question,.clockDigital{
+  background:linear-gradient(145deg,#fff,#faf4ff)!important;
+  border:1px solid #eee7f4!important;
+  border-radius:22px!important;
+}
+.opt{
+  border:1px solid #e9e0f1!important;
+  border-radius:17px!important;
+  background:#fff!important;
+}
+.opt:hover{
+  transform:translateY(-2px)!important;
+  border-color:#cdb7eb!important;
+  box-shadow:0 10px 22px rgba(78,51,125,.08)!important;
+}
+input,select{
+  min-height:52px!important;
+  border:1px solid #e6deee!important;
+  border-radius:17px!important;
+  background:#fff!important;
+}
+input:focus,select:focus{
+  border-color:#bda4ea!important;
+  box-shadow:0 0 0 4px rgba(112,80,230,.10)!important;
+}
+.progress{height:9px!important;background:#eee8f5!important}
+.bar{background:linear-gradient(90deg,#7050e6,#a65fe9,#ec78ad)!important}
+
+/* Login screen kept visually consistent with the premium pink theme */
+#mefxAuthGate{
+  padding:26px 14px!important;
+  background:
+    radial-gradient(circle at 8% 5%,rgba(149,117,255,.20),transparent 30%),
+    radial-gradient(circle at 92% 8%,rgba(255,130,181,.22),transparent 30%),
+    linear-gradient(135deg,#fffaff,#f7f1ff 52%,#fff7fb)!important;
+}
+.mefx-auth-card{
+  width:min(860px,100%)!important;
+  border-radius:32px!important;
+  padding:34px!important;
+  background:rgba(255,255,255,.94)!important;
+  box-shadow:0 28px 75px rgba(78,51,125,.16)!important;
+}
+.mefx-auth-logo{
+  width:76px!important;height:76px!important;border-radius:24px!important;
+  background:linear-gradient(135deg,#704de6,#9f5eea,#ee70aa)!important;
+}
+.mefx-auth-card h2{font-size:34px!important;letter-spacing:1px!important;color:#25233b!important}
+.mefx-auth-card .sub{font-size:16px!important;line-height:1.7!important}
+.mefx-auth-tabs{gap:12px!important}
+.mefx-auth-tabs button{
+  min-height:60px!important;border-radius:20px!important;
+  background:#f7f1fb!important;color:#6a48d7!important;
+}
+.mefx-auth-tabs button.active{
+  background:linear-gradient(100deg,#704de6,#9f5eea,#ee70aa)!important;
+  color:#fff!important;
+  box-shadow:0 10px 25px rgba(111,80,230,.22)!important;
+}
+.mefx-auth-msg{border-radius:16px!important}
+@media(max-width:760px){
+  .wrap{padding:14px 12px 52px!important}
+  .dashboard{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .card{border-radius:24px!important}
+  .brand{min-height:170px!important}
+  .mefx-auth-card{padding:24px 18px!important}
+}
+@media(max-width:500px){
+  .dashboard,.grid,.options,.clockModeGrid{grid-template-columns:1fr!important}
+  .brand h1,.mefx-auth-card h2{font-size:28px!important}
+  .question{font-size:40px!important}
+}
+</style>
+
+
+<style id="MEFX_PREMIUM_UI_V2">
+/* Visual layer only. Existing app HTML, data and JavaScript remain unchanged. */
+:root{
+  --mefx-ink:#29243d;
+  --mefx-muted:#7d778d;
+  --mefx-violet:#7854e8;
+  --mefx-violet2:#a66bed;
+  --mefx-pink:#ee78ad;
+  --mefx-pale:#f8f5ff;
+  --mefx-line:#ece5f4;
+}
+html,body{background:#faf8ff!important}
+body{
+  background:
+    radial-gradient(circle at 6% 0%,rgba(143,111,255,.14),transparent 27%),
+    radial-gradient(circle at 97% 7%,rgba(255,126,177,.14),transparent 25%),
+    linear-gradient(180deg,#fffaff 0%,#f8f4ff 58%,#fffafd 100%)!important;
+  color:var(--mefx-ink)!important;
+}
+.wrap{width:min(1160px,100%)!important;padding:28px 20px 74px!important}
+.card{
+  border-radius:30px!important;
+  border:1px solid rgba(236,229,244,.9)!important;
+  background:rgba(255,255,255,.9)!important;
+  box-shadow:0 18px 55px rgba(67,42,111,.075),0 3px 10px rgba(67,42,111,.025)!important;
+  backdrop-filter:blur(12px);
+}
+.brand{
+  min-height:210px!important;
+  overflow:hidden!important;
+  position:relative!important;
+  display:flex!important;
+  justify-content:center!important;
+  background:
+    radial-gradient(circle at 87% 24%,rgba(247,126,174,.22),transparent 23%),
+    radial-gradient(circle at 10% 5%,rgba(129,92,238,.15),transparent 29%),
+    linear-gradient(135deg,#fff 0%,#fbf5ff 58%,#fff5fa 100%)!important;
+}
+.brand:after{
+  content:"";position:absolute;width:230px;height:230px;border-radius:50%;
+  right:-95px;bottom:-125px;border:32px solid rgba(236,120,173,.08);
+}
+.brand .logo{
+  width:76px!important;height:76px!important;border-radius:25px!important;
+  background:linear-gradient(135deg,#704de7,#9d62ed 55%,#ee77ad)!important;
+  box-shadow:0 15px 35px rgba(113,77,231,.25)!important;
+}
+.brand h1{font-size:35px!important;letter-spacing:1.3px!important;color:#29243d!important}
+.brand p{letter-spacing:2.3px!important;color:#81798f!important}
+.dashboard{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:18px!important}
+.menuBtn{
+  position:relative!important;overflow:hidden!important;min-height:158px!important;
+  padding:22px!important;border-radius:24px!important;
+  border:1px solid var(--mefx-line)!important;
+  background:linear-gradient(145deg,#fff,#fffbfe)!important;
+  box-shadow:0 9px 24px rgba(67,42,111,.05)!important;
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease!important;
+}
+.menuBtn:before{content:"";position:absolute;width:90px;height:90px;border-radius:50%;right:-35px;top:-35px;background:linear-gradient(135deg,rgba(119,84,232,.08),rgba(238,120,173,.1));}
+.menuBtn:hover{transform:translateY(-6px)!important;border-color:#ddcfee!important;box-shadow:0 22px 42px rgba(67,42,111,.12)!important}
+.menuBtn:active{transform:scale(.975)!important}
+.menuBtn .ico{
+  width:56px!important;height:56px!important;border-radius:19px!important;
+  background:linear-gradient(145deg,#eee7ff,#fff0f7)!important;color:#7450e5!important;
+  box-shadow:0 8px 18px rgba(115,80,229,.1)!important;
+}
+.menuBtn b{font-size:16px!important;color:#2b273e!important}.menuBtn span{color:#817b8e!important}
+.sectionTitle{font-size:28px!important;color:#2a263e!important}
+.tile,.grammarCard,.mefx-profile-card,.mefx-admin-stat,.mefx-profile-stat{
+  border-radius:23px!important;border:1px solid var(--mefx-line)!important;
+  background:linear-gradient(145deg,#fff,#fffbfe)!important;
+  box-shadow:0 8px 24px rgba(67,42,111,.045)!important;
+}
+.primary,.btn.primary{
+  border:0!important;
+  background:linear-gradient(100deg,#7450e6 0%,#a662ed 54%,#ed77ad 100%)!important;
+  box-shadow:0 12px 28px rgba(112,80,230,.22)!important;
+}
+.secondary,.btn.secondary{background:linear-gradient(135deg,#f0eaff,#fff0f7)!important;color:#6844d7!important}
+.btn{border-radius:16px!important;transition:transform .16s ease,box-shadow .16s ease!important}
+.btn:hover{transform:translateY(-2px)!important}.btn:active{transform:scale(.97)!important}
+.badge{background:linear-gradient(135deg,#f0eaff,#fff0f6)!important;color:#6845d8!important;border:1px solid #e4d8f2!important}
+.question,.clockDigital{
+  border:1px solid var(--mefx-line)!important;border-radius:24px!important;
+  background:linear-gradient(145deg,#fff,#faf5ff)!important;
+}
+.opt{border-radius:18px!important;border:1px solid #e9e0f1!important;background:#fff!important;transition:.2s!important}
+.opt:hover{transform:translateY(-2px)!important;border-color:#cdb7eb!important;box-shadow:0 11px 23px rgba(67,42,111,.075)!important}
+input,select{
+  border-radius:17px!important;border:1px solid #e6deee!important;background:#fff!important;
+}
+input:focus,select:focus{border-color:#bda4ea!important;box-shadow:0 0 0 4px rgba(112,80,230,.10)!important}
+.progress{height:10px!important;background:#eee8f5!important;border-radius:999px!important}
+.bar{border-radius:999px!important;background:linear-gradient(90deg,#7050e6,#a65fe9,#ec78ad)!important}
+
+/* Auth screen */
+#mefxAuthGate{
+  background:
+    radial-gradient(circle at 8% 5%,rgba(149,117,255,.20),transparent 30%),
+    radial-gradient(circle at 92% 8%,rgba(255,130,181,.22),transparent 30%),
+    linear-gradient(135deg,#fffaff,#f7f1ff 52%,#fff7fb)!important;
+}
+.mefx-auth-card{
+  border-radius:34px!important;border:1px solid rgba(255,255,255,.9)!important;
+  background:rgba(255,255,255,.93)!important;
+  box-shadow:0 30px 80px rgba(67,42,111,.16)!important;
+}
+.mefx-auth-logo{
+  width:80px!important;height:80px!important;border-radius:26px!important;
+  background:linear-gradient(135deg,#704de6,#9f5eea,#ee70aa)!important;
+  box-shadow:0 14px 34px rgba(112,77,230,.25)!important;
+}
+.mefx-auth-tabs button{border-radius:19px!important;background:#f6f0fb!important;color:#6a48d7!important}
+.mefx-auth-tabs button.active{background:linear-gradient(100deg,#704de6,#9f5eea,#ee70aa)!important;color:#fff!important;box-shadow:0 10px 25px rgba(111,80,230,.22)!important}
+
+/* Footer */
+#MEFX_PREMIUM_FOOTER{
+  margin-top:38px;padding:28px 22px;border-radius:28px;
+  border:1px solid var(--mefx-line);
+  background:linear-gradient(135deg,#fff,#fbf5ff 60%,#fff5fa);
+  box-shadow:0 12px 35px rgba(67,42,111,.055);
+  text-align:center;
+}
+#MEFX_PREMIUM_FOOTER .mefx-footer-brand{font-weight:900;font-size:18px;color:#2c2840;margin-bottom:6px}
+#MEFX_PREMIUM_FOOTER .mefx-footer-sub{font-size:12px;color:#847d90;margin-bottom:18px}
+#MEFX_PREMIUM_FOOTER .mefx-footer-links{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+#MEFX_PREMIUM_FOOTER button{
+  border:1px solid #e9e0f1;background:rgba(255,255,255,.75);color:#71697f;
+  padding:9px 13px;border-radius:999px;cursor:pointer;transition:.2s;font:inherit;font-size:12px;
+}
+#MEFX_PREMIUM_FOOTER button:hover{transform:translateY(-2px);color:#6844d7;border-color:#cdb7eb;box-shadow:0 7px 16px rgba(67,42,111,.08)}
+
+/* Legal modal */
+#MEFX_LEGAL_MODAL{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(29,22,49,.52);backdrop-filter:blur(7px);z-index:9999}
+#MEFX_LEGAL_MODAL.show{display:flex}
+.mefx-legal-box{width:min(720px,100%);max-height:84vh;overflow:auto;border-radius:30px;padding:28px;background:#fff;box-shadow:0 30px 100px rgba(20,10,40,.35);animation:mefxPop .25s ease}
+@keyframes mefxPop{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:none}}
+.mefx-legal-close{float:right;border:0;width:38px;height:38px;border-radius:50%;background:#f4eff9;color:#655d76;font-size:21px;cursor:pointer}
+.mefx-legal-content{padding:6px 5px 12px;color:#615b70;line-height:1.75;font-size:14px}
+.mefx-legal-content h2{color:#2b273e;margin:8px 0 14px}.mefx-legal-content h3{color:#403958;margin-top:20px}
+.mefx-legal-content a{color:#724ce0;text-decoration:none;font-weight:700}
+@media(max-width:760px){
+  .wrap{padding:16px 12px 55px!important}.dashboard{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}
+  .menuBtn{min-height:145px!important;padding:17px!important}.brand{min-height:185px!important}.brand h1{font-size:29px!important}
+}
+@media(max-width:500px){.dashboard,.grid,.options,.clockModeGrid{grid-template-columns:1fr!important}.menuBtn{min-height:125px!important}}
+</style>
+
+
+<style id="MEFX_SOFT_BLUE_UI">
+:root{
+ --mefx-bg:#f4f8ff;--mefx-card:#ffffff;--mefx-ink:#15243a;--mefx-muted:#71829a;
+ --mefx-line:#dce8f5;--mefx-blue:#4b91e8;--mefx-blue2:#83bdf1;--mefx-soft:#eaf4ff;
+}
+html,body{background:var(--mefx-bg)!important}
+body{
+ color:var(--mefx-ink)!important;
+ background:
+ radial-gradient(circle at 8% 0%,rgba(131,189,241,.18),transparent 29%),
+ radial-gradient(circle at 94% 7%,rgba(75,145,232,.12),transparent 26%),
+ linear-gradient(180deg,#fbfdff 0%,#f4f8ff 60%,#f8fbff 100%)!important;
+}
+.wrap{width:min(1160px,100%)!important;padding:28px 18px 72px!important}
+.card{
+ background:rgba(255,255,255,.94)!important;border:1px solid var(--mefx-line)!important;
+ border-radius:28px!important;box-shadow:0 18px 48px rgba(46,89,142,.08)!important;
+}
+.brand{
+ min-height:200px!important;position:relative!important;overflow:hidden!important;
+ background:radial-gradient(circle at 88% 22%,rgba(131,189,241,.25),transparent 26%),
+ linear-gradient(135deg,#fff,#f4f9ff 60%,#edf7ff)!important;
+}
+.brand .logo,.mefx-auth-logo{
+ background:linear-gradient(135deg,#4b91e8,#68a8ed 55%,#8bc6f3)!important;
+ box-shadow:0 15px 32px rgba(75,145,232,.23)!important;
+}
+.brand h1,.sectionTitle,.infoPanel h2{color:#15243a!important}
+.brand p,.subtitle{color:var(--mefx-muted)!important}
+.dashboard{gap:17px!important}
+.menuBtn{
+ position:relative!important;overflow:hidden!important;min-height:152px!important;
+ border:1px solid var(--mefx-line)!important;border-radius:23px!important;
+ background:linear-gradient(145deg,#fff,#f8fbff)!important;
+ box-shadow:0 9px 24px rgba(46,89,142,.055)!important;
+ transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease!important;
+}
+.menuBtn:before{content:"";position:absolute;width:92px;height:92px;border-radius:50%;right:-35px;top:-35px;background:rgba(75,145,232,.075)}
+.menuBtn:hover{transform:translateY(-5px)!important;border-color:#b9d7f2!important;box-shadow:0 22px 42px rgba(46,89,142,.12)!important}
+.menuBtn:active,.btn:active,.opt:active{transform:scale(.98)!important}
+.menuBtn .ico{background:linear-gradient(145deg,#e8f3ff,#f5faff)!important;color:#4b91e8!important;border-radius:18px!important}
+.menuBtn b{color:#1b2c44!important}.menuBtn span{color:#74859b!important}
+.tile,.grammarCard,.mefx-profile-card,.mefx-admin-stat,.mefx-profile-stat,.infoBox{
+ border:1px solid var(--mefx-line)!important;border-radius:22px!important;
+ background:linear-gradient(145deg,#fff,#f8fbff)!important;
+ box-shadow:0 8px 22px rgba(46,89,142,.045)!important;
+}
+.badge{background:#eaf4ff!important;color:#397fd8!important;border:1px solid #cde2f7!important}
+.primary,.btn.primary{
+ border:0!important;background:linear-gradient(100deg,#4b91e8,#68a9ee,#8bc6f3)!important;
+ box-shadow:0 11px 26px rgba(75,145,232,.22)!important;
+}
+.secondary,.btn.secondary{background:#edf6ff!important;color:#397fd8!important;border:1px solid #d1e5f8!important}
+.btn{border-radius:16px!important;transition:transform .16s ease,box-shadow .16s ease!important}
+.question,.clockDigital{border:1px solid var(--mefx-line)!important;border-radius:23px!important;background:linear-gradient(145deg,#fff,#f2f8ff)!important}
+.opt{border:1px solid #dce8f5!important;border-radius:18px!important;background:#fff!important;transition:.18s!important}
+.opt:hover{transform:translateY(-2px)!important;border-color:#a9ccec!important;box-shadow:0 10px 23px rgba(46,89,142,.08)!important}
+input,select{border:1px solid #d6e5f4!important;border-radius:16px!important;background:#fff!important}
+input:focus,select:focus{border-color:#7fb7ec!important;box-shadow:0 0 0 4px rgba(75,145,232,.10)!important}
+.progress{background:#e7f0fa!important;border-radius:999px!important}
+.bar{background:linear-gradient(90deg,#4b91e8,#6eafef,#91caf5)!important;border-radius:999px!important}
+#mefxAuthGate{
+ background:radial-gradient(circle at 8% 5%,rgba(131,189,241,.21),transparent 30%),
+ radial-gradient(circle at 92% 8%,rgba(75,145,232,.15),transparent 30%),
+ linear-gradient(135deg,#fbfdff,#f0f7ff 56%,#f8fcff)!important;
+}
+.mefx-auth-card{border-radius:33px!important;background:rgba(255,255,255,.94)!important;border:1px solid rgba(255,255,255,.9)!important;box-shadow:0 30px 76px rgba(46,89,142,.15)!important}
+.mefx-auth-tabs button{background:#edf6ff!important;color:#4385da!important;border-radius:18px!important}
+.mefx-auth-tabs button.active{background:linear-gradient(100deg,#4b91e8,#68a9ee,#8bc6f3)!important;color:#fff!important}
+#MEFX_PREMIUM_FOOTER{
+ border-color:#dce8f5!important;background:linear-gradient(135deg,#fff,#f4f9ff 62%,#edf7ff)!important;
+ box-shadow:0 13px 36px rgba(46,89,142,.06)!important;
+}
+#MEFX_PREMIUM_FOOTER .mefx-footer-brand{color:#1b2c44!important}
+#MEFX_PREMIUM_FOOTER .mefx-footer-sub{color:#77889f!important}
+#MEFX_PREMIUM_FOOTER button{border-color:#d4e5f5!important;background:#f8fbff!important;color:#5d718b!important}
+#MEFX_PREMIUM_FOOTER button:hover{color:#397fd8!important;border-color:#a9ccec!important;background:#eaf4ff!important}
+.mefx-legal-box{border-radius:30px!important}.mefx-legal-content{color:#60738b!important}.mefx-legal-content h2,.mefx-legal-content h3{color:#1b2c44!important}.mefx-legal-content a{color:#397fd8!important}
+@media(max-width:760px){.wrap{padding:16px 12px 55px!important}.dashboard{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}.menuBtn{min-height:138px!important;padding:17px!important}}
+@media(max-width:500px){.dashboard,.grid,.options,.clockModeGrid{grid-template-columns:1fr!important}.brand h1{font-size:28px!important}}
+</style>
+<script id="MEFX_BACK_BUTTON_FIX">
+(function(){
+  document.addEventListener('DOMContentLoaded',function(){
+    document.querySelectorAll('button').forEach(function(btn){
+      var txt=(btn.textContent||'').replace(/\s+/g,' ').trim().toLowerCase();
+      var isBack=txt==='← back'||txt==='back'||txt.startsWith('← back');
+      if(!isBack || btn.dataset.mefxBackFix) return;
+      btn.dataset.mefxBackFix='1';
+      btn.addEventListener('click',function(){
+        setTimeout(function(){
+          var info=document.getElementById('info');
+          if(info && !info.classList.contains('hidden')) return;
+          var hiddenAll=['home','dashboard'].every(function(id){
+            var el=document.getElementById(id);
+            return !el || el.classList.contains('hidden');
+          });
+          if(hiddenAll && typeof window.closeInfo==='function'){
+            try{window.closeInfo()}catch(e){}
+          }
+        },30);
+      });
+    });
+  });
+})();
+</script>
+
 </head><body>
 <div id="mefxAuthGate">
   <div class="mefx-auth-card">
@@ -896,7 +1491,11 @@ else if(mode==='mixed'){q=item.q;expected=item.a;if(item.type==='date'){$('quest
 else if(mode==='clock'){let [h,m]=item;expected=clockExpression(h,m);q=lastConfig.config.mode==='digital'?`<div class="clockDigital">${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}</div>`:drawClock(h,m);let s=new Set([expected]);while(s.size<4)s.add(clockExpression(1+Math.floor(Math.random()*12),Math.floor(Math.random()*12)*5));opts=shuffle([...s]);$('question').innerHTML=q;$('prompt').textContent='এখন কয়টা বাজে?';$('answers').innerHTML='<div class="options">'+opts.map((x,i)=>`<button class="opt" data-v="${escapeHtml(x)}" onclick="pick(this)">${String.fromCharCode(65+i)}. ${escapeHtml(x)}</button>`).join('')+'</div>';return}
 else if(mode==='listening'){let typ=lastConfig.config.type,text;if(typ==='word'){text=item[0];expected=item[1];opts=shuffle([expected,...shuffle(DATA.entries.filter(x=>x[1]!==expected).map(x=>x[1])).slice(0,3)])}else if(typ==='nativeNumber'){text=item[1];expected=String(item[0]);opts=shuffle([expected,...shuffle(MEFX_NATIVE_CLOCK.filter(x=>x[0]!==item[0]).map(x=>String(x[0]))).slice(0,3)])}else if(typ==='sinoNumber'){text=item[1];expected=String(item[0]);opts=shuffle([expected,...shuffle(DATA.sino.filter(x=>x[0]!==item[0]).map(x=>String(x[0]))).slice(0,3)])}else{text=clockExpression(item[0],item[1]);expected=text;opts=shuffle([expected,...Array.from({length:3},()=>clockExpression(1+Math.floor(Math.random()*12),Math.floor(Math.random()*12)*5))])}$('question').innerHTML='<button class="audioBtn" id="playAudio">🔊 Play Korean Audio</button><div class="audioState">Slow Korean Teacher</div>';$('prompt').textContent='শুনে সঠিক উত্তর নির্বাচন করো';$('answers').innerHTML='<div class="options">'+opts.map((x,i)=>`<button class="opt" data-v="${escapeHtml(x)}" onclick="pick(this)">${String.fromCharCode(65+i)}. ${escapeHtml(x)}</button>`).join('')+'</div>';$('playAudio').onclick=()=>MEFXSpeak(text,.62);return}
 $('question').innerHTML=q;$('prompt').textContent=mode==='tense'?'উপরের Korean শব্দটি কোন কালের?':'সঠিক উত্তর নির্বাচন করো';$('answers').innerHTML='<div class="options">'+opts.map((x,i)=>`<button class="opt" data-v="${escapeHtml(x)}" onclick="pick(this)">${String.fromCharCode(65+i)}. ${escapeHtml(x)}</button>`).join('')+'</div>'}
-</script><script src="supabase-config.js"></script>
+</script><script id="MEFX_SUPABASE_CONFIG_INLINE">
+/* MAHAMUD EFX Korean Study Master browser-safe Supabase configuration. */
+window.MEFX_SUPABASE_URL = 'https://timscfxhzbzgdoahppfw.supabase.co';
+window.MEFX_SUPABASE_KEY = 'sb_publishable_D3_ZQrYc4jBAXdWve9DIcg_ORzXWT3V';
+</script>
 <script id="MEFX_UPGRADE_LOGIC">
 /* MAHAMUD EFX v3 account/timer/leaderboard upgrade */
 const MEFX_SUPABASE_URL = window.MEFX_SUPABASE_URL || 'YOUR_SUPABASE_PROJECT_URL';
@@ -993,4 +1592,45 @@ async function MEFXTranslateFallback(word){try{let url='https://api.mymemory.tra
 const MEFX_BASE_SCAN=MEFXScanImage;
 MEFXScanImage=async function(input){let f=input.files&&input.files[0];if(!f)return;let st=$('mefxScanStatus');st.textContent='Korean লেখা শনাক্ত করা হচ্ছে...';try{if(!window.Tesseract){await new Promise((res,rej)=>{let s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js';s.onload=res;s.onerror=rej;document.head.appendChild(s)})}let out=await Tesseract.recognize(f,'kor');let text=(out.data.text||'').trim();if(!text){st.textContent='Korean লেখা শনাক্ত করা যায়নি।';return}let toks=[...new Set(text.split(/\s+/).map(x=>x.replace(/[^\uAC00-\uD7A3ㄱ-ㅎㅏ-ㅣ]/g,'')).filter(Boolean))];let dict=new Map(DATA.entries.map(x=>[x[0],x[1]]));let norm=new Map(DATA.entries.map(x=>[x[0].replace(/\s/g,''),x[1]]));let cardsOut=[];for(let t of toks){let meaning=dict.get(t)||norm.get(t.replace(/\s/g,''))||await MEFXTranslateFallback(t);cardsOut.push(`<div class="grammarCard"><b style="font-size:20px">${escapeHtml(t)}</b><p>বাংলা অর্থ: ${escapeHtml(meaning||'বাংলা অর্থ পাওয়া যায়নি')}</p><button class="btn primary" onclick='MEFXSpeak(${JSON.stringify(t)},.7)'>🔊 উচ্চারণ</button></div>`)}$('mefxScanResult').innerHTML=`<div class="note"><b>Detected Korean:</b><br>${escapeHtml(text)}</div>`+cardsOut.join('');st.textContent='Translation complete'}catch(e){st.textContent='OCR/translation কাজ করতে পারেনি। পরিষ্কার ছবি দিয়ে আবার চেষ্টা করুন।'}};
 MEFXInit();
-</script></body></html>
+</script>
+<div id="MEFX_PREMIUM_FOOTER">
+  <div class="mefx-footer-brand">KOREAN STUDY MASTER</div>
+  <div class="mefx-footer-sub">A personal educational project by MAHAMUD EFX</div>
+  <div class="mefx-footer-links">
+    <button data-mefx-legal="about">About Us</button>
+    <button data-mefx-legal="privacy">Privacy Policy</button>
+    <button data-mefx-legal="terms">Terms &amp; Conditions</button>
+    <button data-mefx-legal="disclaimer">Disclaimer</button>
+    <button data-mefx-legal="contact">Contact</button>
+  </div>
+</div>
+<div id="MEFX_LEGAL_MODAL" aria-hidden="true">
+  <div class="mefx-legal-box">
+    <button class="mefx-legal-close" type="button" aria-label="Close">×</button>
+    <div class="mefx-legal-content" id="MEFX_LEGAL_CONTENT"></div>
+  </div>
+</div>
+<script id="MEFX_LEGAL_SCRIPT">
+(function(){
+  var modal=document.getElementById('MEFX_LEGAL_MODAL');
+  var content=document.getElementById('MEFX_LEGAL_CONTENT');
+  var pages={
+    about:'<h2>About Us</h2><p>Korean Study Master is a personal educational project by MAHAMUD EFX, created to support Korean language learning and practice.</p><p>The platform provides learning materials, practice activities and test features for learners.</p>',
+    privacy:'<h2>Privacy Policy</h2><p>Korean Study Master may use browser storage to remember learning progress, preferences or other features required for the website to function.</p><p>If you have an account or wish to request deletion of account-related data, contact us by email.</p><p>Contact: <a href="mailto:contact@mahamudefx.xyz">contact@mahamudefx.xyz</a></p>',
+    terms:'<h2>Terms &amp; Conditions</h2><p>This website is provided for personal educational use. Users should use the platform lawfully and should not attempt to misuse, disrupt or interfere with the website or its services.</p>',
+    disclaimer:'<h2>Disclaimer</h2><p>Korean Study Master is an independent personal educational project. It is not an official website of EPS-TOPIK, HRD Korea or the Korean government.</p><p>Learning materials and practice features are provided for educational purposes.</p>',
+    contact:'<h2>Contact</h2><p><strong>Email:</strong> <a href="mailto:contact@mahamudefx.xyz">contact@mahamudefx.xyz</a></p><p><strong>Telegram:</strong> <a href="https://t.me/mahamudefx" target="_blank" rel="noopener">@mahamudefx</a></p>'
+  };
+  document.querySelectorAll('[data-mefx-legal]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      content.innerHTML=pages[btn.getAttribute('data-mefx-legal')]||'';
+      modal.classList.add('show');modal.setAttribute('aria-hidden','false');
+    });
+  });
+  function close(){modal.classList.remove('show');modal.setAttribute('aria-hidden','true');}
+  modal.querySelector('.mefx-legal-close').addEventListener('click',close);
+  modal.addEventListener('click',function(e){if(e.target===modal)close();});
+})();
+</script>
+
+</body></html>
