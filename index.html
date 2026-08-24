@@ -1475,7 +1475,13 @@ async function MEFXScanImage(input){let f=input.files&&input.files[0];if(!f)retu
 function startMEFXMixed(n){let bank=[];DATA.entries.forEach(x=>bank.push({type:'vocab',q:x[0],a:x[1]}));MEFX_NATIVE_CLOCK.forEach(x=>bank.push({type:'number',q:x[1],a:String(x[0])}));DATA.sino.forEach(x=>bank.push({type:'number',q:x[1],a:String(x[0])}));DATA.days.forEach(x=>bank.push({type:'week',q:x[0],a:x[1]}));DATA.months.forEach(x=>bank.push({type:'month',q:x[0],a:x[1]}));DATA.dates.forEach(x=>bank.push({type:'date',q:x[0],a:String(x[1])}));DATA.tenses.forEach(x=>bank.push({type:'tense',q:x[2],a:x[3]}));DATA.synAnt.forEach(x=>{bank.push({type:'synant',q:x[0],a:x[1]});bank.push({type:'synant',q:x[1],a:x[0]})});MEFX_GRAMMAR_QUESTIONS.forEach(x=>bank.push({type:'grammar',q:x.question,a:x.answer,options:x.options}));DATA.conversation.forEach(x=>bank.push({type:'conversation',q:x[0],a:x[1],options:DATA.conversation.filter(y=>y!==x).slice(0,3).map(y=>y[1])}));startQuiz('MIXED EXAM',shuffle(bank).slice(0,Math.min(n,bank.length)),'mixed')}
 function pick(btn){if(answered)return;answered=true;let expected=lastExpected(),val=btn.dataset.v;document.querySelectorAll('.opt').forEach(b=>{b.disabled=true;if(b.dataset.v===expected)b.classList.add('correct')});if(val===expected){correct++;btn.classList.add('correct');showFeedback(true,'✓ Correct! সঠিক উত্তর: '+expected);if(lastConfig.mode==='vocab'&&lastConfig.config.wrongRetry){let a=JSON.parse(localStorage.getItem('MEFX_VOCAB_WRONG')||'[]');a=a.filter(x=>x[0]!==quiz[qIndex][0]||x[1]!==quiz[qIndex][1]);localStorage.setItem('MEFX_VOCAB_WRONG',JSON.stringify(a))}if(lastConfig.mode==='grammar'&&lastConfig.config.wrongRetry){let a=JSON.parse(localStorage.getItem('MEFX_GRAMMAR_WRONG')||'[]');a=a.filter(x=>x.id!==quiz[qIndex].id);localStorage.setItem('MEFX_GRAMMAR_WRONG',JSON.stringify(a))}}else{wrong++;btn.classList.add('wrong');showFeedback(false,'✕ Wrong! সঠিক উত্তর: '+expected);if(lastConfig.mode==='vocab'){let a=JSON.parse(localStorage.getItem('MEFX_VOCAB_WRONG')||'[]');let x=quiz[qIndex];if(!a.some(z=>z[0]===x[0]&&z[1]===x[1]))a.push(x);localStorage.setItem('MEFX_VOCAB_WRONG',JSON.stringify(a))}if(lastConfig.mode==='grammar'){let a=JSON.parse(localStorage.getItem('MEFX_GRAMMAR_WRONG')||'[]');let x=quiz[qIndex];if(!a.some(z=>z.id===x.id))a.push(x);localStorage.setItem('MEFX_GRAMMAR_WRONG',JSON.stringify(a))}}}
 function renderSection(s){let b=$('sectionBody');b.innerHTML='';if(s==='vocab')return renderVocabHome(b);if(s==='numbers')return renderNumbers(b);if(s==='clock')return renderClockHome(b);if(s==='calendar')return renderCalendar(b);if(s==='listening')return renderListening(b);if(s==='synant')return renderSynAnt(b);if(s==='grammar')return renderGrammar(b);if(s==='conversation')return renderConversation(b);if(s==='scanner')return renderScanner(b);if(s==='mixed')return renderMixed(b)}
-</script><footer class="card" style="text-align:center;margin-top:14px;padding:18px"><div style="font-weight:900">Designed &amp; Developed by MAHAMUD EFX</div><div style="color:#667085;font-size:12px;margin-top:6px">© 2026 MAHAMUD EFX</div></footer>
+</script><!-- Adsterra Ad Unit -->
+<div class="mefx-ad-wrap" style="margin:18px 0;text-align:center;min-height:0;">
+<script async="async" data-cfasync="false" src="https://pl31005364.profitableratecpmnetwork.com/e4e05e63672fdd909cd778d69b3e0019/invoke.js"></script>
+<div id="container-e4e05e63672fdd909cd778d69b3e0019"></div>
+</div>
+<!-- /Adsterra Ad Unit -->
+<footer class="card" style="text-align:center;margin-top:14px;padding:18px"><div style="font-weight:900">Designed &amp; Developed by MAHAMUD EFX</div><div style="color:#667085;font-size:12px;margin-top:6px">© 2026 MAHAMUD EFX</div></footer>
 <script>
 function startListening(type){let arr;if(type==='word')arr=shuffle(DATA.entries).slice(0,20);else if(type==='nativeNumber')arr=shuffle(MEFX_NATIVE_CLOCK).slice(0,20);else if(type==='sinoNumber')arr=shuffle(DATA.sino).slice(0,20);else arr=Array.from({length:20},()=>[1+Math.floor(Math.random()*12),Math.floor(Math.random()*12)*5]);startQuiz(type.toUpperCase()+' LISTENING',arr,'listening',{type})}
 function lastExpected(){let item=quiz[qIndex],mode=lastConfig.mode;if(mode==='vocab'||mode==='week'||mode==='month')return item[1];if(mode==='number')return String(item[0]);if(mode==='date')return String(item[1]);if(mode==='tense')return item[3];if(mode==='grammar')return item.answer;if(mode==='synant')return item.a;if(mode==='mixed')return item.a;if(mode==='clock')return clockExpression(item[0],item[1]);if(mode==='listening'){if(lastConfig.config.type==='word')return item[1];if(lastConfig.config.type==='nativeNumber'||lastConfig.config.type==='sinoNumber')return String(item[0]);return clockExpression(item[0],item[1])}}
@@ -1634,4 +1640,10 @@ MEFXInit();
 })();
 </script>
 
+<!-- Adsterra Social Bar -->
+<script src="https://pl31005366.profitableratecpmnetwork.com/40/16/25/4016253a26e1b415f3b97f7eb3b6e8ff.js"></script>
+<!-- /Adsterra Social Bar -->
+<!-- Adsterra Popunder -->
+<script src="https://pl31005365.profitableratecpmnetwork.com/13/eb/0a/13eb0a0af824e29357df457f3588c28f.js"></script>
+<!-- /Adsterra Popunder -->
 </body></html>
