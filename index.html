@@ -806,7 +806,7 @@ input:focus,select:focus{border-color:#7fb7ec!important;box-shadow:0 0 0 4px rgb
    const o=document.createElement('div'); o.id='MEFXWelcomeOverlay';
    o.innerHTML='<div id="MEFXWelcomeCard"><div class="spark">🌸</div><div class="kr">안녕하세요, '+esc(username)+'</div><p class="desc">আপনাকে এখানে স্বাগতম। মন দিয়ে পড়াশোনা করুন এবং প্রতিদিন একটু একটু করে এগিয়ে যান—ইনশাআল্লাহ আপনি সফল হতে পারবেন। 💙</p></div>';
    document.body.appendChild(o); o.style.display='grid';
-   setTimeout(()=>{o.classList.add('hide');setTimeout(()=>o.remove(),650)},12000);
+   setTimeout(()=>{o.classList.add('hide');setTimeout(()=>o.remove(),650)},9000);
  };
  document.addEventListener('click',function(e){
    const b=e.target.closest && e.target.closest('#mefxAuthGate .btn.primary');
@@ -814,6 +814,933 @@ input:focus,select:focus{border-color:#7fb7ec!important;box-shadow:0 0 0 4px rgb
  },true);
 })();
 </script>
+
+
+<style id="MEFX_REAL_PREMIUM_REDESIGN">
+/* =========================================================
+   MAHAMUD EFX — VISIBLE PREMIUM UI
+   Visual layer only. Existing study logic/content/navigation untouched.
+   ========================================================= */
+:root{
+  --mefx-ink:#182b45;
+  --mefx-muted:#728198;
+  --mefx-blue:#4b91e8;
+  --mefx-purple:#716ff0;
+  --mefx-line:#e2eaf4;
+  --mefx-surface:#ffffff;
+}
+
+/* ---------- Overall atmosphere ---------- */
+body{
+  background:
+    radial-gradient(700px 420px at -8% -5%,rgba(72,151,238,.17),transparent 62%),
+    radial-gradient(650px 420px at 108% 0%,rgba(113,112,238,.13),transparent 62%),
+    linear-gradient(180deg,#fbfdff 0%,#f1f6fc 52%,#f8fbff 100%) !important;
+  color:var(--mefx-ink)!important;
+}
+.wrap{max-width:1180px!important}
+
+/* ---------- Brand/header: same content, much stronger visual identity ---------- */
+.brand{
+  position:relative!important;
+  overflow:hidden!important;
+  padding:34px 22px 30px!important;
+  border-radius:30px!important;
+  background:
+    radial-gradient(circle at 12% 15%,rgba(75,145,232,.13),transparent 30%),
+    radial-gradient(circle at 88% 10%,rgba(113,112,240,.12),transparent 30%),
+    linear-gradient(145deg,#ffffff 0%,#f4f8ff 100%)!important;
+  border:1px solid rgba(75,145,232,.13)!important;
+  box-shadow:0 18px 55px rgba(36,73,115,.10)!important;
+}
+.brand:after{
+  content:"";position:absolute;left:12%;right:12%;bottom:0;height:3px;
+  border-radius:99px;
+  background:linear-gradient(90deg,transparent,#72a8e9,#7c7be9,transparent);
+  opacity:.65;
+}
+.brand .logo{
+  width:70px!important;height:70px!important;border-radius:22px!important;
+  background:linear-gradient(145deg,#4389e3,#756ff0)!important;
+  box-shadow:0 16px 36px rgba(75,145,232,.25)!important;
+  animation:mefxLogoFloat 3.2s ease-in-out infinite!important;
+}
+.brand h1{
+  margin-top:15px!important;
+  font-size:clamp(25px,5vw,40px)!important;
+  letter-spacing:-.035em!important;
+  color:#1c304d!important;
+  text-shadow:0 2px 18px rgba(50,83,125,.08);
+}
+@keyframes mefxLogoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+
+/* ---------- Existing app toolbar ---------- */
+#mefxAppTools{
+  padding:8px!important;
+  gap:9px!important;
+  border-radius:20px!important;
+  background:rgba(255,255,255,.70)!important;
+  border:1px solid rgba(75,145,232,.11)!important;
+  box-shadow:0 10px 30px rgba(36,73,115,.06)!important;
+  backdrop-filter:blur(14px)!important;
+}
+#mefxAppTools .btn{
+  min-height:43px!important;
+  border-radius:14px!important;
+  border:1px solid rgba(75,145,232,.14)!important;
+  box-shadow:0 5px 15px rgba(36,73,115,.05)!important;
+}
+#mefxAppTools .mefx-user-pill{
+  background:linear-gradient(135deg,#edf6ff,#f4f2ff)!important;
+  border:1px solid rgba(75,145,232,.16)!important;
+  color:#314968!important;
+  padding:10px 14px!important;
+}
+
+/* ---------- Home card ---------- */
+#home{
+  padding:28px!important;
+  border-radius:30px!important;
+  background:linear-gradient(145deg,#ffffff,#f8fbff)!important;
+  border:1px solid rgba(75,145,232,.12)!important;
+  box-shadow:0 18px 55px rgba(36,73,115,.09)!important;
+}
+#home .badge{
+  display:inline-flex!important;
+  align-items:center!important;
+  min-height:34px!important;
+  padding:7px 13px!important;
+  border-radius:999px!important;
+  background:linear-gradient(135deg,#eaf4ff,#f1f0ff)!important;
+  border:1px solid rgba(75,145,232,.13)!important;
+  color:#3975b9!important;
+  font-weight:950!important;
+}
+#home .sectionTitle{
+  font-size:clamp(27px,5vw,38px)!important;
+  letter-spacing:-.045em!important;
+  color:#1d304b!important;
+  margin-top:15px!important;
+}
+#home .subtitle{
+  max-width:680px!important;
+  font-size:15px!important;
+}
+
+/* ---------- MAIN DASHBOARD: same buttons/options, new premium composition ---------- */
+#dashboard{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:16px!important;
+  margin-top:25px!important;
+}
+#dashboard .menuBtn{
+  position:relative!important;
+  min-height:155px!important;
+  padding:22px 20px!important;
+  text-align:left!important;
+  border-radius:25px!important;
+  border:1px solid #e1eaf4!important;
+  background:linear-gradient(145deg,#ffffff 0%,#f8fbff 100%)!important;
+  box-shadow:0 11px 30px rgba(36,73,115,.075)!important;
+  overflow:hidden!important;
+  transition:transform .24s cubic-bezier(.2,.8,.2,1),box-shadow .24s,border-color .24s,background .24s!important;
+}
+#dashboard .menuBtn:before{
+  content:"";position:absolute;right:-42px;top:-48px;width:130px;height:130px;
+  border-radius:50%;background:linear-gradient(135deg,rgba(75,145,232,.10),rgba(113,112,240,.07));
+  pointer-events:none;
+}
+#dashboard .menuBtn:after{
+  content:"→";position:absolute;right:18px;bottom:16px;
+  width:31px;height:31px;border-radius:50%;display:grid;place-items:center;
+  color:#4b91e8;background:#edf5ff;font-size:17px;font-weight:950;
+  opacity:.0;transform:translateX(-6px);
+  transition:.24s ease;
+}
+#dashboard .menuBtn:hover{
+  transform:translateY(-7px)!important;
+  border-color:rgba(75,145,232,.30)!important;
+  background:linear-gradient(145deg,#ffffff,#f2f7ff)!important;
+  box-shadow:0 22px 46px rgba(36,73,115,.14)!important;
+}
+#dashboard .menuBtn:hover:after{opacity:1;transform:none}
+#dashboard .menuBtn .ico{
+  width:54px!important;height:54px!important;
+  display:grid!important;place-items:center!important;
+  border-radius:18px!important;
+  margin-bottom:16px!important;
+  background:linear-gradient(145deg,#edf6ff,#f0efff)!important;
+  border:1px solid rgba(75,145,232,.11)!important;
+  font-size:27px!important;
+  box-shadow:0 8px 20px rgba(75,145,232,.08)!important;
+  transition:transform .24s ease!important;
+}
+#dashboard .menuBtn:hover .ico{transform:translateY(-3px) rotate(-2deg) scale(1.04)}
+#dashboard .menuBtn b{
+  display:block!important;
+  color:#263b58!important;
+  font-size:17px!important;
+  letter-spacing:-.015em!important;
+  margin-bottom:6px!important;
+}
+#dashboard .menuBtn span{
+  display:block!important;
+  max-width:88%!important;
+  color:#7a899d!important;
+  font-size:12.5px!important;
+  line-height:1.55!important;
+}
+#dashboard .menuBtn small{
+  color:#5575c9!important;
+  background:#f1f4ff!important;
+  border:1px solid #e2e8ff!important;
+  border-radius:999px!important;
+  padding:5px 8px!important;
+  width:max-content!important;
+}
+
+/* ---------- Existing secondary tiles on every section ---------- */
+.grid{
+  gap:15px!important;
+}
+.grid .tile{
+  position:relative!important;
+  min-height:130px!important;
+  padding:20px!important;
+  border-radius:23px!important;
+  border:1px solid #e1e9f3!important;
+  background:linear-gradient(145deg,#ffffff,#f8fbff)!important;
+  box-shadow:0 9px 26px rgba(36,73,115,.065)!important;
+  transition:transform .23s ease,box-shadow .23s ease,border-color .23s ease!important;
+}
+.grid .tile:hover{
+  transform:translateY(-5px)!important;
+  border-color:rgba(75,145,232,.28)!important;
+  box-shadow:0 18px 38px rgba(36,73,115,.12)!important;
+}
+.grid .tile .ti{
+  width:48px!important;height:48px!important;
+  display:grid!important;place-items:center!important;
+  border-radius:16px!important;
+  background:linear-gradient(145deg,#edf6ff,#f1f0ff)!important;
+  margin-bottom:13px!important;
+  font-size:23px!important;
+}
+
+/* ---------- Inner pages: same sections, polished framing ---------- */
+#section,#study,#test,#mefxProfile,#mefxLeaderboard,#mefxAdmin,#result{
+  border-radius:30px!important;
+  background:linear-gradient(145deg,#ffffff,#f8fbff)!important;
+  border:1px solid rgba(75,145,232,.12)!important;
+  box-shadow:0 18px 55px rgba(36,73,115,.085)!important;
+}
+.row{
+  padding-bottom:12px!important;
+  border-bottom:1px solid rgba(75,145,232,.08)!important;
+}
+.row .btn.secondary{
+  border-radius:13px!important;
+}
+
+/* ---------- Generic cards / tables / notes ---------- */
+.note,.feedback,.stat,.mefx-profile-card,.mefx-admin-stat{
+  border-radius:18px!important;
+  border-color:#e2eaf4!important;
+  box-shadow:0 8px 22px rgba(36,73,115,.055)!important;
+}
+table{
+  border-radius:16px!important;
+  overflow:hidden!important;
+}
+th{
+  background:linear-gradient(135deg,#eef6ff,#f3f1ff)!important;
+}
+
+/* ---------- Welcome card: DEFINITELY centered on mobile ---------- */
+#MEFXWelcomeOverlay{
+  position:fixed!important;
+  inset:0!important;
+  width:100vw!important;
+  height:100vh!important;
+  box-sizing:border-box!important;
+  z-index:100000!important;
+  display:none!important;
+  align-items:center!important;
+  justify-content:center!important;
+  padding:20px!important;
+  margin:0!important;
+  background:rgba(21,45,74,.20)!important;
+  backdrop-filter:blur(8px)!important;
+  -webkit-backdrop-filter:blur(8px)!important;
+}
+#MEFXWelcomeOverlay[style*="display: grid"]{
+  display:flex!important;
+}
+#MEFXWelcomeCard{
+  position:relative!important;
+  width:min(520px,calc(100vw - 40px))!important;
+  max-width:520px!important;
+  margin:0 auto!important;
+  box-sizing:border-box!important;
+  transform:none!important;
+  padding:34px 28px 30px!important;
+  border-radius:32px!important;
+  background:linear-gradient(145deg,rgba(255,255,255,.99),rgba(247,251,255,.98))!important;
+  border:1px solid rgba(255,255,255,.98)!important;
+  box-shadow:0 35px 100px rgba(24,57,95,.25)!important;
+}
+#MEFXWelcomeCard:before{
+  content:"";position:absolute;left:12%;right:12%;top:0;height:3px;border-radius:99px;
+  background:linear-gradient(90deg,transparent,#6aa4e8,#7774e9,transparent);
+}
+#MEFXWelcomeCard .spark{font-size:31px!important}
+#MEFXWelcomeCard .kr{
+  font-size:clamp(24px,7vw,34px)!important;
+  line-height:1.25!important;
+  color:#347ed7!important;
+  letter-spacing:-.025em!important;
+}
+#MEFXWelcomeCard .desc{
+  max-width:430px!important;
+  margin:0 auto!important;
+  color:#64758a!important;
+  font-size:15px!important;
+  line-height:1.85!important;
+}
+@media(max-width:700px){
+  #dashboard{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}
+  #dashboard .menuBtn{min-height:148px!important;padding:18px!important;border-radius:21px!important}
+  #dashboard .menuBtn .ico{width:48px!important;height:48px!important;border-radius:15px!important;font-size:24px!important}
+  #home{padding:21px!important;border-radius:25px!important}
+}
+@media(max-width:430px){
+  #dashboard{grid-template-columns:1fr 1fr!important}
+  #dashboard .menuBtn b{font-size:15px!important}
+  #dashboard .menuBtn span{font-size:11.5px!important}
+  #MEFXWelcomeCard{padding:30px 20px 27px!important;border-radius:28px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation:none!important;transition:none!important}
+}
+</style>
+
+<script id="MEFX_PREMIUM_MICRO_INTERACTIONS">
+document.addEventListener('pointerdown',function(e){
+  const el=e.target.closest && e.target.closest('#dashboard .menuBtn,.grid .tile,#mefxAppTools .btn,.btn');
+  if(!el || !el.animate) return;
+  el.animate(
+    [{transform:'scale(1)'},{transform:'scale(.975)'},{transform:'scale(1.008)'},{transform:'scale(1)'}],
+    {duration:280,easing:'cubic-bezier(.2,.8,.2,1)'}
+  );
+},{passive:true});
+</script>
+
+
+<style id="MEFX_ULTRA_V2">
+/* ==========================================================
+   MAHAMUD EFX — ULTRA V2 VISUAL SYSTEM
+   Existing HTML/content/functions remain the source of truth.
+   This layer changes presentation only.
+   ========================================================== */
+
+:root{
+  --v2-navy:#102542;
+  --v2-navy2:#173b68;
+  --v2-blue:#3b8bea;
+  --v2-cyan:#55c3ef;
+  --v2-violet:#756cf2;
+  --v2-surface:#ffffff;
+  --v2-soft:#f4f8fe;
+  --v2-line:#dce7f3;
+  --v2-text:#182b45;
+  --v2-muted:#718197;
+}
+
+/* ---------- Background ---------- */
+body{
+  background:
+    radial-gradient(800px 520px at -10% -10%,rgba(65,148,238,.20),transparent 62%),
+    radial-gradient(700px 480px at 110% 5%,rgba(117,108,242,.17),transparent 60%),
+    radial-gradient(500px 300px at 50% 48%,rgba(85,195,239,.07),transparent 70%),
+    linear-gradient(180deg,#f9fcff 0%,#eef5fc 50%,#f7faff 100%) !important;
+}
+body:after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
+  opacity:.28;
+  background-image:radial-gradient(rgba(16,37,66,.08) .7px,transparent .7px);
+  background-size:18px 18px;
+}
+
+/* ---------- Header: dramatic but clean ---------- */
+.brand{
+  padding:36px 24px 34px!important;
+  border-radius:32px!important;
+  color:#fff!important;
+  background:
+    radial-gradient(circle at 10% 0%,rgba(85,195,239,.30),transparent 28%),
+    radial-gradient(circle at 90% 0%,rgba(117,108,242,.35),transparent 30%),
+    linear-gradient(135deg,#102542 0%,#173b68 58%,#315e96 100%)!important;
+  border:1px solid rgba(255,255,255,.14)!important;
+  box-shadow:0 24px 70px rgba(16,37,66,.22)!important;
+}
+.brand:before{
+  content:"";position:absolute;inset:1px;border-radius:31px;pointer-events:none;
+  background:linear-gradient(115deg,rgba(255,255,255,.12),transparent 30%,transparent 70%,rgba(255,255,255,.08));
+}
+.brand:after{
+  left:7%!important;right:7%!important;bottom:0!important;height:4px!important;
+  background:linear-gradient(90deg,transparent,#55c3ef,#8b86ff,#55c3ef,transparent)!important;
+  opacity:.9!important;
+}
+.brand .logo{
+  width:76px!important;height:76px!important;border-radius:24px!important;
+  background:linear-gradient(145deg,#ffffff,#e9f6ff)!important;
+  color:#235d9e!important;
+  border:1px solid rgba(255,255,255,.65)!important;
+  box-shadow:0 16px 42px rgba(0,0,0,.20),inset 0 0 0 6px rgba(75,145,232,.08)!important;
+}
+.brand h1{
+  color:#fff!important;
+  font-size:clamp(26px,5vw,42px)!important;
+  letter-spacing:-.045em!important;
+  text-shadow:0 4px 20px rgba(0,0,0,.18)!important;
+}
+.brand p{color:rgba(255,255,255,.70)!important}
+
+/* ---------- Toolbar ---------- */
+#mefxAppTools{
+  margin-top:14px!important;
+  padding:9px!important;
+  border-radius:22px!important;
+  background:rgba(255,255,255,.80)!important;
+  border:1px solid rgba(255,255,255,.95)!important;
+  box-shadow:0 14px 36px rgba(22,59,103,.09)!important;
+  backdrop-filter:blur(18px)!important;
+}
+#mefxAppTools .btn{
+  min-height:44px!important;
+  border-radius:15px!important;
+  background:#fff!important;
+  color:#294563!important;
+  border:1px solid #e1eaf4!important;
+  box-shadow:0 5px 16px rgba(22,59,103,.06)!important;
+}
+#mefxAppTools .btn:hover{
+  color:#fff!important;
+  background:linear-gradient(135deg,#3b8bea,#756cf2)!important;
+  border-color:transparent!important;
+  box-shadow:0 10px 25px rgba(75,120,220,.25)!important;
+}
+#mefxAppTools .mefx-user-pill{
+  background:linear-gradient(135deg,#eaf6ff,#f0efff)!important;
+  border:1px solid #dbe8f6!important;
+  color:#294563!important;
+}
+
+/* ---------- Home frame ---------- */
+#home{
+  position:relative!important;
+  overflow:hidden!important;
+  padding:30px!important;
+  border-radius:32px!important;
+  background:rgba(255,255,255,.93)!important;
+  border:1px solid rgba(255,255,255,.96)!important;
+  box-shadow:0 24px 65px rgba(25,62,104,.11)!important;
+}
+#home:before{
+  content:"";position:absolute;right:-100px;top:-130px;width:340px;height:340px;border-radius:50%;
+  background:radial-gradient(circle,rgba(75,145,232,.17),rgba(117,108,242,.07) 48%,transparent 70%);
+  pointer-events:none;
+}
+#home:after{
+  content:"";position:absolute;left:-80px;bottom:-150px;width:300px;height:300px;border-radius:50%;
+  background:radial-gradient(circle,rgba(85,195,239,.12),transparent 68%);
+  pointer-events:none;
+}
+#home .badge{
+  position:relative!important;z-index:1!important;
+  background:linear-gradient(135deg,#e8f5ff,#f0efff)!important;
+  color:#356fae!important;
+  border:1px solid #d8e8f7!important;
+  box-shadow:0 6px 18px rgba(59,139,234,.08)!important;
+}
+#home .sectionTitle{
+  position:relative!important;z-index:1!important;
+  font-size:clamp(30px,5.3vw,44px)!important;
+  line-height:1.08!important;
+  letter-spacing:-.055em!important;
+  background:linear-gradient(100deg,#172b47 5%,#3d78ba 54%,#716cf0 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent!important;
+}
+#home .subtitle{
+  position:relative!important;z-index:1!important;
+  max-width:700px!important;font-size:15px!important;
+}
+
+/* ---------- Dashboard cards: strong visual redesign ---------- */
+#dashboard{
+  position:relative!important;z-index:2!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:17px!important;margin-top:27px!important;
+}
+#dashboard .menuBtn{
+  min-height:176px!important;
+  padding:22px!important;
+  border-radius:27px!important;
+  text-align:left!important;
+  overflow:hidden!important;
+  isolation:isolate!important;
+  background:#fff!important;
+  border:1px solid #dfe9f4!important;
+  box-shadow:0 12px 32px rgba(22,59,103,.075)!important;
+}
+#dashboard .menuBtn:nth-child(3n+1){--accent:#3b8bea;--accent2:#55c3ef;--tint:#edf7ff}
+#dashboard .menuBtn:nth-child(3n+2){--accent:#6f6bef;--accent2:#9b84f5;--tint:#f2efff}
+#dashboard .menuBtn:nth-child(3n){--accent:#1aa9a0;--accent2:#62d4c8;--tint:#ebfbf8}
+#dashboard .menuBtn:before{
+  content:"";position:absolute;z-index:-1;right:-42px;top:-48px;width:165px;height:165px;border-radius:50%;
+  background:radial-gradient(circle at 35% 65%,color-mix(in srgb,var(--accent) 22%,white),transparent 68%);
+}
+#dashboard .menuBtn:after{
+  content:"↗";position:absolute;right:18px;bottom:17px;
+  width:34px;height:34px;border-radius:11px;display:grid;place-items:center;
+  background:var(--tint);color:var(--accent);font-size:18px;font-weight:950;
+  opacity:0;transform:translate(-6px,6px);
+  transition:.25s cubic-bezier(.2,.8,.2,1);
+}
+#dashboard .menuBtn:hover{
+  transform:translateY(-9px)!important;
+  border-color:color-mix(in srgb,var(--accent) 30%,white)!important;
+  box-shadow:0 24px 52px rgba(22,59,103,.15)!important;
+}
+#dashboard .menuBtn:hover:after{opacity:1;transform:none}
+#dashboard .menuBtn .ico{
+  width:58px!important;height:58px!important;
+  border-radius:19px!important;margin-bottom:16px!important;
+  background:var(--tint)!important;
+  border:1px solid color-mix(in srgb,var(--accent) 13%,white)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 9px 22px color-mix(in srgb,var(--accent) 10%,transparent)!important;
+  font-size:28px!important;
+}
+#dashboard .menuBtn:hover .ico{
+  transform:translateY(-3px) scale(1.06) rotate(-2deg)!important;
+}
+#dashboard .menuBtn b{
+  color:#1e3450!important;font-size:17px!important;letter-spacing:-.018em!important;
+}
+#dashboard .menuBtn span{
+  color:#7b8a9d!important;line-height:1.6!important;
+}
+#dashboard .menuBtn small{
+  margin-top:10px!important;
+  background:var(--tint)!important;color:var(--accent)!important;
+  border:1px solid color-mix(in srgb,var(--accent) 12%,white)!important;
+  padding:5px 9px!important;border-radius:999px!important;
+}
+
+/* ---------- Section tiles ---------- */
+.grid{gap:16px!important}
+.grid .tile{
+  position:relative!important;overflow:hidden!important;
+  min-height:142px!important;padding:20px!important;
+  border-radius:24px!important;
+  background:linear-gradient(145deg,#fff,#f8fbff)!important;
+  border:1px solid #dfe8f3!important;
+  box-shadow:0 10px 29px rgba(22,59,103,.07)!important;
+  transition:.25s cubic-bezier(.2,.8,.2,1)!important;
+}
+.grid .tile:after{
+  content:"";position:absolute;right:-35px;bottom:-50px;width:130px;height:130px;border-radius:50%;
+  background:radial-gradient(circle,rgba(75,145,232,.10),transparent 68%);
+}
+.grid .tile:hover{
+  transform:translateY(-7px)!important;
+  border-color:#bcd5ef!important;
+  box-shadow:0 21px 45px rgba(22,59,103,.13)!important;
+}
+.grid .tile .ti{
+  width:52px!important;height:52px!important;border-radius:17px!important;
+  background:linear-gradient(145deg,#edf6ff,#f0efff)!important;
+  border:1px solid #e0eaf7!important;
+  box-shadow:0 8px 20px rgba(59,139,234,.08)!important;
+}
+
+/* ---------- Inner pages ---------- */
+#section,#study,#test,#mefxProfile,#mefxLeaderboard,#mefxAdmin,#result{
+  border-radius:31px!important;
+  border:1px solid rgba(255,255,255,.95)!important;
+  background:rgba(255,255,255,.94)!important;
+  box-shadow:0 22px 62px rgba(22,59,103,.095)!important;
+}
+#section .sectionTitle,#mefxLeaderboard .sectionTitle,#mefxAdmin .sectionTitle{
+  font-size:clamp(26px,5vw,38px)!important;letter-spacing:-.045em!important;
+}
+.row{
+  padding-bottom:13px!important;
+  border-bottom:1px solid #e7eef6!important;
+}
+
+/* ---------- Welcome popup: centered + 9 seconds ---------- */
+#MEFXWelcomeOverlay{
+  align-items:center!important;justify-content:center!important;
+  padding:18px!important;
+  background:rgba(10,30,52,.24)!important;
+  backdrop-filter:blur(9px)!important;-webkit-backdrop-filter:blur(9px)!important;
+}
+#MEFXWelcomeCard{
+  width:min(530px,calc(100vw - 36px))!important;
+  margin:0!important;
+  padding:36px 28px 31px!important;
+  border-radius:34px!important;
+  background:
+    radial-gradient(circle at 10% 0%,rgba(85,195,239,.12),transparent 35%),
+    radial-gradient(circle at 95% 0%,rgba(117,108,242,.13),transparent 35%),
+    linear-gradient(145deg,#fff,#f7fbff)!important;
+  border:1px solid rgba(255,255,255,.98)!important;
+  box-shadow:0 38px 110px rgba(10,38,68,.28)!important;
+}
+#MEFXWelcomeCard .spark{font-size:30px!important}
+#MEFXWelcomeCard .kr{
+  color:#2877cf!important;font-size:clamp(24px,7vw,35px)!important;
+}
+#MEFXWelcomeCard .desc{
+  color:#64768b!important;max-width:440px!important;margin:0 auto!important;
+}
+
+/* ---------- Auth card ---------- */
+#mefxAuthGate{
+  background:
+    radial-gradient(700px 480px at 5% 5%,rgba(85,195,239,.20),transparent 60%),
+    radial-gradient(700px 480px at 95% 0%,rgba(117,108,242,.20),transparent 60%),
+    linear-gradient(135deg,#f7fbff,#eef5ff 55%,#faf9ff)!important;
+}
+.mefx-auth-card{
+  border-radius:31px!important;
+  box-shadow:0 34px 95px rgba(24,55,91,.20)!important;
+}
+.mefx-auth-tabs button.active{
+  background:linear-gradient(135deg,#3b8bea,#756cf2)!important;
+  box-shadow:0 9px 22px rgba(75,120,220,.23)!important;
+}
+#mefxAuthGate .btn.primary{
+  background:linear-gradient(135deg,#3b8bea,#756cf2)!important;
+  border:0!important;
+  box-shadow:0 12px 27px rgba(75,120,220,.22)!important;
+}
+
+/* ---------- Small screens ---------- */
+@media(max-width:800px){
+  #dashboard{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:480px){
+  #dashboard{grid-template-columns:1fr 1fr!important;gap:11px!important}
+  #dashboard .menuBtn{min-height:154px!important;padding:17px!important;border-radius:21px!important}
+  #dashboard .menuBtn .ico{width:49px!important;height:49px!important;border-radius:16px!important;font-size:24px!important}
+  #dashboard .menuBtn b{font-size:15px!important}
+  #dashboard .menuBtn span{font-size:11.5px!important}
+  #home{padding:21px!important;border-radius:25px!important}
+  #MEFXWelcomeCard{padding:31px 20px 28px!important;border-radius:29px!important}
+}
+</style>
+
+
+<style id="MEFX_MASTER_UI_V3">
+/* ==========================================================
+   MASTER UI V3 — premium Korean education platform aesthetic
+   Visual additions only. Study data, formulas, handlers and
+   navigation remain unchanged.
+   ========================================================== */
+
+/* ---------- Brand: lighter, calmer, more premium ---------- */
+.brand{
+  position:relative!important;
+  overflow:hidden!important;
+  padding:27px 22px 24px!important;
+  text-align:center!important;
+  isolation:isolate!important;
+  background:
+    radial-gradient(500px 230px at 0% 0%,rgba(76,153,235,.16),transparent 62%),
+    radial-gradient(450px 230px at 100% 0%,rgba(116,106,241,.14),transparent 60%),
+    linear-gradient(145deg,#ffffff 0%,#f8fbff 58%,#f5f5ff 100%)!important;
+  border:1px solid rgba(94,142,194,.14)!important;
+  box-shadow:0 20px 55px rgba(30,67,108,.10)!important;
+}
+.brand:before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:
+    linear-gradient(90deg,transparent 0 18%,rgba(76,153,235,.035) 18.2%,transparent 18.4% 81.6%,rgba(116,106,241,.035) 81.8%,transparent 82%);
+}
+.brand:after{
+  content:"";position:absolute;left:9%;right:9%;bottom:0;height:3px;
+  border-radius:99px!important;
+  background:linear-gradient(90deg,transparent,#59a5ea 25%,#756cf2 50%,#59a5ea 75%,transparent)!important;
+  opacity:.7!important;
+}
+.brand-orbit{
+  position:absolute!important;z-index:-1!important;border-radius:50%!important;
+  border:1px solid rgba(76,153,235,.10)!important;pointer-events:none!important;
+}
+.brand-orbit-a{width:280px;height:280px;right:-150px;top:-180px}
+.brand-orbit-b{width:190px;height:190px;left:-120px;bottom:-140px;border-color:rgba(117,108,242,.09)!important}
+.brand-eyebrow{
+  display:inline-flex!important;align-items:center!important;gap:7px!important;
+  margin-bottom:13px!important;padding:6px 11px!important;border-radius:999px!important;
+  color:#5b7592!important;background:rgba(238,247,255,.82)!important;
+  border:1px solid #dfeaf6!important;
+  font-size:9px!important;font-weight:950!important;letter-spacing:1.2px!important;
+}
+.brand-eyebrow span{
+  width:6px;height:6px;border-radius:50%;background:#4b91e8;
+  box-shadow:0 0 0 4px rgba(75,145,232,.10);
+}
+.brand-eyebrow b{color:#a0aec0!important}
+.brand .logo{
+  width:72px!important;height:72px!important;border-radius:23px!important;
+  margin:0 auto 12px!important;
+  color:#2769aa!important;
+  background:linear-gradient(145deg,#ffffff,#eaf5ff)!important;
+  border:1px solid #dbe9f6!important;
+  box-shadow:0 15px 34px rgba(48,108,171,.15),inset 0 0 0 6px rgba(75,145,232,.055)!important;
+}
+.brand h1{
+  margin:0!important;
+  color:#172d49!important;
+  font-size:clamp(24px,5vw,39px)!important;
+  line-height:1.12!important;
+  letter-spacing:-.045em!important;
+  text-shadow:none!important;
+}
+.brand-tagline{
+  margin:9px 0 15px!important;
+  color:#7a8ca0!important;
+  font-size:12px!important;
+  letter-spacing:.25px!important;
+}
+.brand-highlights{
+  display:flex!important;justify-content:center!important;align-items:center!important;
+  flex-wrap:wrap!important;gap:8px!important;
+}
+.brand-highlights span{
+  display:inline-flex!important;align-items:center!important;
+  min-height:31px!important;padding:6px 10px!important;border-radius:999px!important;
+  color:#4e6782!important;background:rgba(255,255,255,.82)!important;
+  border:1px solid #e1eaf4!important;
+  box-shadow:0 4px 12px rgba(34,71,111,.04)!important;
+  font-size:10px!important;font-weight:850!important;
+}
+
+/* ---------- Make the home feel like a learning dashboard ---------- */
+#home{
+  padding-top:27px!important;
+}
+#home .badge{
+  position:relative!important;
+  padding:8px 13px!important;
+  letter-spacing:1px!important;
+  box-shadow:0 7px 18px rgba(65,128,197,.07)!important;
+}
+#home .sectionTitle{
+  font-size:clamp(29px,5.5vw,43px)!important;
+  line-height:1.06!important;
+}
+#home .subtitle{
+  font-size:14px!important;
+  color:#74859a!important;
+}
+
+/* Add a small visual section label without changing the actual dashboard. */
+#home:before{
+  content:"YOUR LEARNING SPACE";
+  position:absolute;right:27px;top:30px;
+  padding:6px 9px;border-radius:999px;
+  color:#7990a8;background:#f3f7fc;border:1px solid #e5edf5;
+  font-size:8px;font-weight:950;letter-spacing:1.2px;
+  opacity:.9;
+}
+@media(max-width:560px){
+  #home:before{display:none}
+}
+
+/* ---------- Dashboard cards: more education-product feel ---------- */
+#dashboard .menuBtn{
+  min-height:181px!important;
+  padding:21px!important;
+}
+#dashboard .menuBtn b{font-size:17px!important}
+#dashboard .menuBtn span{max-width:90%!important}
+#dashboard .menuBtn .ico{
+  position:relative!important;
+}
+#dashboard .menuBtn .ico:after{
+  content:"";position:absolute;inset:6px;border-radius:12px;
+  border:1px solid rgba(255,255,255,.72);pointer-events:none;
+}
+#dashboard .menuBtn small{
+  display:inline-block!important;
+  margin-top:10px!important;
+}
+
+/* ---------- Inner page headers get a consistent premium hierarchy ---------- */
+#section,#study,#test,#result,#mefxProfile,#mefxLeaderboard,#mefxAdmin{
+  position:relative!important;overflow:hidden!important;
+}
+#section:before,#study:before,#test:before,#result:before,#mefxProfile:before,#mefxLeaderboard:before,#mefxAdmin:before{
+  content:"";position:absolute;left:0;right:0;top:0;height:4px;
+  background:linear-gradient(90deg,#4b91e8,#55c3ef,#756cf2);
+  opacity:.72;
+}
+#section .badge,#study .badge,#test .badge{
+  background:linear-gradient(135deg,#edf7ff,#f1efff)!important;
+  border:1px solid #dce8f5!important;
+}
+
+/* ---------- Existing cards: stronger hierarchy, not more clutter ---------- */
+.note,.feedback,.stat,.mefx-profile-card,.mefx-admin-stat{
+  background:linear-gradient(145deg,#fff,#f8fbff)!important;
+}
+.stat{
+  border:1px solid #dfe8f3!important;
+}
+
+/* ---------- Welcome card stays centered, 9 sec from V2 ---------- */
+#MEFXWelcomeOverlay{
+  align-items:center!important;justify-content:center!important;
+}
+#MEFXWelcomeCard{
+  width:min(530px,calc(100vw - 36px))!important;
+  margin:0 auto!important;
+}
+
+/* ---------- Mobile ---------- */
+@media(max-width:600px){
+  .brand{padding:23px 16px 21px!important;border-radius:27px!important}
+  .brand .logo{width:62px!important;height:62px!important;border-radius:20px!important}
+  .brand-eyebrow{font-size:8px!important}
+  .brand-tagline{font-size:11px!important;margin-bottom:12px!important}
+  .brand-highlights{gap:6px!important}
+  .brand-highlights span{font-size:9px!important;padding:5px 8px!important}
+}
+</style>
+
+
+<style id="MEFX_CLEAN_MASTER_HEADER_V4">
+/* Clean premium header: logo + title only. No extra labels/chips/taglines. */
+.brand{
+  min-height:190px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  padding:27px 20px 30px!important;
+  background:
+    radial-gradient(420px 220px at 10% 0%,rgba(75,145,232,.11),transparent 64%),
+    radial-gradient(420px 220px at 90% 0%,rgba(117,108,242,.09),transparent 64%),
+    linear-gradient(145deg,#ffffff,#f7faff)!important;
+}
+.brand .logo{
+  margin:0 auto 14px!important;
+  width:70px!important;height:70px!important;
+  border-radius:22px!important;
+  background:linear-gradient(145deg,#ffffff,#eaf5ff)!important;
+  color:#286eaf!important;
+  border:1px solid #dce9f6!important;
+  box-shadow:
+    0 14px 32px rgba(43,104,164,.13),
+    inset 0 0 0 6px rgba(75,145,232,.045)!important;
+}
+.brand h1{
+  margin:0!important;
+  color:#1a304d!important;
+  font-size:clamp(24px,5.5vw,38px)!important;
+  line-height:1.1!important;
+  letter-spacing:-.045em!important;
+  font-weight:900!important;
+}
+.brand-orbit-a{width:270px!important;height:270px!important;right:-160px!important;top:-185px!important}
+.brand-orbit-b{width:180px!important;height:180px!important;left:-120px!important;bottom:-135px!important}
+@media(max-width:600px){
+  .brand{min-height:175px!important;padding:24px 15px 27px!important}
+  .brand .logo{width:62px!important;height:62px!important;border-radius:20px!important;margin-bottom:12px!important}
+  .brand h1{font-size:clamp(23px,7vw,32px)!important}
+}
+/* Keep the rest of the V3 visual system, but remove any old V3 header extras if CSS attempts to target them. */
+.brand-eyebrow,.brand-tagline,.brand-highlights{display:none!important}
+</style>
+
+
+<style id="MEFX_KOREAN_HEADER_V5">
+/* V5 — clean Korean-learning header. Removes the heavy color strip and adds only subtle Hangul texture. */
+.brand{
+  position:relative!important;
+  overflow:hidden!important;
+  isolation:isolate!important;
+  background:
+    radial-gradient(430px 230px at 8% 8%,rgba(75,145,232,.08),transparent 65%),
+    radial-gradient(430px 230px at 92% 5%,rgba(117,108,242,.06),transparent 65%),
+    linear-gradient(145deg,#ffffff 0%,#f9fbfe 100%)!important;
+}
+
+/* Remove the blue/violet bar under the title completely. */
+.brand:after{
+  display:none!important;
+}
+
+/* Subtle, decorative Korean-learning atmosphere — intentionally very faint. */
+.brand:before{
+  content:"한글  공부  배우다  읽다  쓰다  듣다  말하다  한국어";
+  position:absolute!important;
+  z-index:-1!important;
+  left:-8%!important;
+  right:-8%!important;
+  bottom:-2px!important;
+  height:62px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  color:rgba(52,103,158,.055)!important;
+  font-family:"Noto Sans KR","Malgun Gothic",Arial,sans-serif!important;
+  font-size:22px!important;
+  font-weight:800!important;
+  letter-spacing:9px!important;
+  transform:rotate(-2deg)!important;
+  pointer-events:none!important;
+  mask-image:linear-gradient(90deg,transparent,black 16%,black 84%,transparent)!important;
+  -webkit-mask-image:linear-gradient(90deg,transparent,black 16%,black 84%,transparent)!important;
+}
+
+/* Keep the title itself completely normal and readable. */
+.brand h1{
+  position:relative!important;
+  z-index:2!important;
+  background:none!important;
+  -webkit-text-fill-color:initial!important;
+  color:#1a304d!important;
+  text-shadow:none!important;
+}
+
+/* Keep logo crisp above the decorative background. */
+.brand .logo{
+  position:relative!important;
+  z-index:2!important;
+}
+
+/* Small premium depth without introducing another colored strip. */
+.brand{
+  box-shadow:0 18px 48px rgba(30,67,108,.085)!important;
+  border-color:rgba(94,142,194,.12)!important;
+}
+
+@media(max-width:600px){
+  .brand:before{
+    font-size:17px!important;
+    letter-spacing:6px!important;
+    height:52px!important;
+  }
+}
+</style>
 
 </head><body>
 <div id="mefxAuthGate">
@@ -858,7 +1785,12 @@ input:focus,select:focus{border-color:#7fb7ec!important;box-shadow:0 0 0 4px rgb
   </div>
 </div>
 <div class="wrap">
-<header class="card brand"><div class="logo">한</div><h1>KOREAN STUDY MASTER WEBSITE</h1><p></p></header><div id="mefxAppTools" class="mefx-tools hidden"><button class="btn secondary" onclick="MEFXOpenProfile()">👤 Profile</button><button class="btn secondary" onclick="MEFXOpenLeaderboard()">🏆 Leaderboard</button><button id="mefxAdminBtn" class="btn secondary hidden" onclick="MEFXOpenAdmin()">👑 Admin</button><span id="mefxUserPill" class="mefx-user-pill">👤 User</span><button class="btn ghost" onclick="MEFXSignOut()">Logout</button></div>
+<header class="card brand">
+  <div class="brand-orbit brand-orbit-a"></div>
+  <div class="brand-orbit brand-orbit-b"></div>
+  <div class="logo">한</div>
+  <h1>KOREAN STUDY MASTER</h1>
+</header><div id="mefxAppTools" class="mefx-tools hidden"><button class="btn secondary" onclick="MEFXOpenProfile()">👤 Profile</button><button class="btn secondary" onclick="MEFXOpenLeaderboard()">🏆 Leaderboard</button><button id="mefxAdminBtn" class="btn secondary hidden" onclick="MEFXOpenAdmin()">👑 Admin</button><span id="mefxUserPill" class="mefx-user-pill">👤 User</span><button class="btn ghost" onclick="MEFXSignOut()">Logout</button></div>
 <section id="home" class="card"><span class="badge">KOREAN STUDY MASTER</span><h2 class="sectionTitle">Study • Practice • Exam</h2><p class="subtitle">সবকিছু এক জায়গায়। তোমার progress এই browser-এ সংরক্ষিত থাকবে।</p><div class="dashboard" id="dashboard"></div></section>
 <section id="section" class="card hidden"><div class="row"><button class="btn secondary" onclick="goHome()">← Home</button><span id="sectionBadge" class="badge"></span></div><h2 id="sectionTitle" class="sectionTitle"></h2><p id="sectionSub" class="subtitle"></p><div id="sectionBody"></div></section>
 <section id="study" class="card hidden"><div class="row"><button class="btn secondary" onclick="backToSection()">← Back</button><span id="studyBadge" class="badge"></span></div><div id="studyBody"></div></section>
