@@ -810,7 +810,7 @@ input:focus,select:focus{border-color:#7fb7ec!important;box-shadow:0 0 0 4px rgb
 </div>
 <div class="wrap">
 <header class="card brand"><div class="logo">한</div><h1>KOREAN STUDY MASTER WEBSITE</h1><p></p></header><div id="mefxAppTools" class="mefx-tools hidden"><button class="btn secondary" onclick="MEFXOpenProfile()">👤 Profile</button><button class="btn secondary" onclick="MEFXOpenLeaderboard()">🏆 Leaderboard</button><button id="mefxAdminBtn" class="btn secondary hidden" onclick="MEFXOpenAdmin()">👑 Admin</button><span id="mefxUserPill" class="mefx-user-pill">👤 User</span><button class="btn ghost" onclick="MEFXSignOut()">Logout</button></div>
-<div id="MEFX_AD_SLOT_HOME" data-mefx-ad-page="home"></div>
+<div id="MEFX_AD_SLOT_MIXED" data-mefx-ad-page="mixed"></div>
 <section id="home" class="card"><span class="badge">KOREAN STUDY MASTER</span><h2 class="sectionTitle">Study • Practice • Exam</h2><p class="subtitle">সবকিছু এক জায়গায়। তোমার progress এই browser-এ সংরক্ষিত থাকবে।</p><div class="dashboard" id="dashboard"></div></section>
 <section id="section" class="card hidden"><div class="row"><button class="btn secondary" onclick="goHome()">← Home</button><span id="sectionBadge" class="badge"></span></div><h2 id="sectionTitle" class="sectionTitle"></h2><p id="sectionSub" class="subtitle"></p><div id="sectionBody"></div></section>
 <section id="study" class="card hidden"><div class="row"><button class="btn secondary" onclick="backToSection()">← Back</button><span id="studyBadge" class="badge"></span></div><div id="studyBody"></div></section>
@@ -829,7 +829,7 @@ function goHome(){hideAll();$('home').classList.remove('hidden');activeSection='
 function hideAll(){['home','section','study','test','result'].forEach(id=>$(id).classList.add('hidden'))}
 function openSection(s){activeSection=s;hideAll();$('section').classList.remove('hidden');let m=sectionMeta[s];$('sectionBadge').textContent=m[1].toUpperCase();$('sectionTitle').textContent=m[0]+'  '+m[1];$('sectionSub').textContent=m[2];renderSection(s);window.scrollTo({top:0,behavior:'smooth'})}
 function backToSection(){openSection(activeSection)}
-function renderDashboard(){let el=$('dashboard');el.innerHTML='';for(let [key,m] of Object.entries(sectionMeta)){let p=getProgress(key);let btn=document.createElement('button');btn.className='menuBtn';btn.onclick=()=>{const pageMap={vocab:'vocabulary.html',numbers:'counting.html',clock:'clock.html',calendar:'calendar.html',listening:'listening.html',synant:'synonym-antonym.html',grammar:'grammar.html',conversation:'conversation.html',scanner:'scanner.html',mixed:'mixed-test.html'};window.location.href=pageMap[key]||'#'};btn.innerHTML=`<div class="ico">${m[0]}</div><b>${m[1]}</b><span>${m[2]}</span>${p?`<small style="display:block;margin-top:9px;color:#5148d8;font-weight:900">Last score: ${p.score}%</small>`:''}`;el.appendChild(btn)}}
+function renderDashboard(){let el=$('dashboard');el.innerHTML='';for(let [key,m] of Object.entries(sectionMeta)){let p=getProgress(key);let btn=document.createElement('button');btn.className='menuBtn';btn.onclick=()=>openSection(key);btn.innerHTML=`<div class="ico">${m[0]}</div><b>${m[1]}</b><span>${m[2]}</span>${p?`<small style="display:block;margin-top:9px;color:#5148d8;font-weight:900">Last score: ${p.score}%</small>`:''}`;el.appendChild(btn)}}
 function renderSection(s){let b=$('sectionBody');b.innerHTML='';if(s==='vocab')return renderVocabHome(b);if(s==='numbers')return renderNumbers(b);if(s==='clock')return renderClockHome(b);if(s==='calendar')return renderCalendar(b);if(s==='listening')return renderListening(b);if(s==='synant')return renderSynAnt(b);if(s==='grammar')return renderGrammar(b);if(s==='conversation')return renderConversation(b);if(s==='scanner')return renderScanner(b);if(s==='mixed')return renderMixed(b)}
 function cards(items){let g=document.createElement('div');g.className='grid';for(let x of items){let b=document.createElement('button');b.className='tile';b.innerHTML=`<div class="ti">${x[0]}</div><b>${x[1]}</b><span>${x[2]}</span>`;b.onclick=x[3];g.appendChild(b)}return g}
 function renderVocabHome(b){let g=document.createElement('div');g.className='grid';for(let i=0;i<4;i++){let start=i*55,end=start+55;let box=document.createElement('button');box.className='tile';box.innerHTML=`<div class="ti">📖</div><b>Section ${i+1}</b><span>${start+1}–${end} • Exam</span>`;box.onclick=()=>openVocabPart(start,end);g.appendChild(box)}b.appendChild(g)}
@@ -1631,6 +1631,37 @@ MEFXInit();
   function close(){modal.classList.remove('show');modal.setAttribute('aria-hidden','true');}
   modal.querySelector('.mefx-legal-close').addEventListener('click',close);
   modal.addEventListener('click',function(e){if(e.target===modal)close();});
+})();
+</script>
+
+
+<script id="MEFX_MULTIPAGE_ROUTER_V6">
+(function(){
+  const TARGET='mixed';
+  function startTarget(){
+    try{
+      if(typeof openSection==='function'){
+        openSection(TARGET);
+        return true;
+      }
+    }catch(e){console.warn('MEFX multipage:',e);}
+    return false;
+  }
+
+  const oldGoHome=window.goHome;
+  window.goHome=function(){
+    window.location.href='index.html';
+  };
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',function(){
+      setTimeout(startTarget,350);
+      setTimeout(startTarget,900);
+    });
+  }else{
+    setTimeout(startTarget,350);
+    setTimeout(startTarget,900);
+  }
 })();
 </script>
 
